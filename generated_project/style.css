@@ -1,0 +1,35 @@
+/* Global Styles */
+
+/* Font Family */
+font-family: Arial, sans-serif;
+
+/* Font Sizes */
+font-size: 16px;
+
+/* Colors */
+primary-color: #333;
+secondary-color: #666;
+background-color: #f2f2f2;
+
+/* Spacing */
+margin: 20px;
+padding: 20px;
+
+/* Layout */
+max-width: 1200px;
+margin: 0 auto;
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+  /* For mobile devices */
+  font-size: 14px;
+  margin: 10px;
+  padding: 10px;
+}
+
+@media only screen and (max-width: 480px) {
+  /* For smaller mobile devices */
+  font-size: 12px;
+  margin: 5px;
+  padding: 5px;
+}
