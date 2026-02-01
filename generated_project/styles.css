@@ -1,0 +1,80 @@
+/* CSS Reset and Box Sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body Styling with Centered Container and Background Gradient */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #f5f5f5, #ccc);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #stopwatch-container Styling */
+#stopwatch-container {
+  max-width: 400px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* #timer-display Styling */
+#timer-display {
+  font-size: 48px;
+  text-align: center;
+  padding: 20px;
+  background: #222;
+  color: #fff;
+}
+
+/* #controls-container Styling */
+#controls-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+/* Buttons Styling */
+button {
+  padding: 12px 24px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #444;
+  color: #fff;
+}
+
+/* #settings-panel Styling */
+#settings-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+/* Keyframe Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(0.5);
+  }
+  to {
+    transform: scale(1);
+  }
+}

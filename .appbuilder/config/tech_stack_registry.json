@@ -1,0 +1,72 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-01-28",
+  "tech_stacks": {
+    "react": {
+      "name": "React",
+      "aliases": ["reactjs", "react.js", "nextjs", "next.js", "jsx"],
+      "keywords": ["react", "jsx", "component", "hooks", "useState", "useEffect", "next"],
+      "file_extensions": [".jsx", ".tsx", ".js", ".ts"],
+      "kb_path": ".appbuilder/knowledge_bases/react",
+      "status": "active",
+      "total_repos": 0,
+      "total_chunks": 0,
+      "categories": ["ui_components", "authentication", "state_management", "routing", "forms", "hooks"]
+    },
+    "python": {
+      "name": "Python",
+      "aliases": ["python3", "py", "fastapi", "flask", "django"],
+      "keywords": ["python", "fastapi", "flask", "django", "api", "backend", "pydantic"],
+      "file_extensions": [".py"],
+      "kb_path": ".appbuilder/knowledge_bases/python",
+      "status": "active",
+      "total_repos": 0,
+      "total_chunks": 0,
+      "categories": ["web_frameworks", "authentication", "database_orm", "api_endpoints", "testing", "utilities"]
+    },
+    "vue": {
+      "name": "Vue.js",
+      "aliases": ["vuejs", "vue", "nuxt", "nuxtjs"],
+      "keywords": ["vue", "composition api", "pinia", "vuex", "nuxt"],
+      "file_extensions": [".vue", ".js", ".ts"],
+      "kb_path": ".appbuilder/knowledge_bases/vue",
+      "status": "active",
+      "total_repos": 0,
+      "total_chunks": 0,
+      "categories": ["components", "composables", "routing", "state_management"]
+    },
+    "nodejs": {
+      "name": "Node.js",
+      "aliases": ["node", "express", "expressjs", "nestjs"],
+      "keywords": ["nodejs", "express", "backend", "middleware", "rest"],
+      "file_extensions": [".js", ".ts", ".mjs"],
+      "kb_path": ".appbuilder/knowledge_bases/nodejs",
+      "status": "active",
+      "total_repos": 0,
+      "total_chunks": 0,
+      "categories": ["express_api", "middleware", "authentication", "database"]
+    },
+    "docker": {
+      "name": "Docker",
+      "aliases": ["containerization", "container", "compose"],
+      "keywords": ["docker", "dockerfile", "compose", "container", "deployment"],
+      "file_extensions": ["Dockerfile", ".yml", ".yaml"],
+      "kb_path": ".appbuilder/knowledge_bases/docker",
+      "status": "active",
+      "total_repos": 0,
+      "total_chunks": 0,
+      "categories": ["dockerfiles", "compose", "deployment", "multi_stage"]
+    },
+    "typescript": {
+      "name": "TypeScript",
+      "aliases": ["ts"],
+      "keywords": ["typescript", "types", "interface", "generics"],
+      "file_extensions": [".ts", ".tsx"],
+      "kb_path": ".appbuilder/knowledge_bases/typescript",
+      "status": "active",
+      "total_repos": 0,
+      "total_chunks": 0,
+      "categories": ["types", "utilities", "patterns"]
+    }
+  }
+}

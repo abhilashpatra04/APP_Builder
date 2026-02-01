@@ -2,38 +2,16 @@ from dotenv import load_dotenv
 from langchain_groq.chat_models import ChatGroq
 from langgraph.constants import END
 from langgraph.graph import StateGraph
-from langchain.agents import create_agent
+from langgraph.prebuilt import create_react_agent
 from agent.prompts import *
 from agent.states import *
 from agent.tools import write_file, read_file, get_current_directory, list_files
 
 _ = load_dotenv()
 
-# set_debug(True)
-# set_verbose(True)
-
-# ============== HYBRID LLM SETUP ==============
-# Use Groq for planning/architecture (needs better reasoning)
-# Use Ollama locally for coding (saves API calls, no rate limits)
-
 planning_llm = ChatGroq(model="llama-3.3-70b-versatile")
-
-# Try to use local Ollama for coding, fallback to Groq if not available
-def get_coding_llm():
-    """Returns Ollama LLM if available, otherwise falls back to Groq."""
-    try:
-        from langchain_ollama import ChatOllama
-        import httpx
-        # Check if Ollama is running
-        httpx.get("http://localhost:11434/api/tags", timeout=2.0)
-        print("✓ Using local Ollama for coding (qwen2.5-coder:7b)")
-        return ChatOllama(model="qwen2.5-coder:7b", temperature=0)
-    except Exception as e:
-        print(f"⚠ Ollama not available ({e}), using Groq for coding")
-        return ChatGroq(model="llama-3.3-70b-versatile")
-
-coding_llm = get_coding_llm()
-# ==============================================
+architect_llm = ChatGroq(model="llama-3.3-70b-versatile")
+coding_llm = ChatGroq(model="llama-3.3-70b-versatile", temperature=0)
 
 
 def planner_agent(state: dict) -> dict:
@@ -72,7 +50,7 @@ def coder_agent(state: dict) -> dict:
         return {"coder_state": coder_state, "status": "DONE"}
 
     current_task = steps[coder_state.current_step_idx]
-    existing_content = read_file.run(current_task.filepath)
+    existing_content = read_file.invoke({"path": current_task.filepath})
 
     system_prompt = coder_system_prompt()
     user_prompt = (
@@ -83,10 +61,12 @@ def coder_agent(state: dict) -> dict:
     )
 
     coder_tools = [read_file, write_file, list_files, get_current_directory]
-    code_agent = create_agent(coding_llm, coder_tools)
+    code_agent = create_react_agent(coding_llm, coder_tools)
 
-    code_agent.invoke({"messages": [{"role": "system", "content": system_prompt},
-                                     {"role": "user", "content": user_prompt}]})
+    code_agent.invoke({"messages": [
+        {"role": "system", "content": system_prompt},
+        {"role": "user", "content": user_prompt}
+    ]})
 
     coder_state.current_step_idx += 1
     return {"coder_state": coder_state}
